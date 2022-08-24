@@ -16,4 +16,4 @@ jobs:
       - name: cdk install 
         run: npm install -g aws-cdk
       - name: buildCommand
-        run: cdk synth --app "node .\bin\myproj.js"
+        run: cdk synth --app ""
