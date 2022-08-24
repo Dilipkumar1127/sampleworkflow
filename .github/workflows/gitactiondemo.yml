@@ -34,7 +34,7 @@ jobs:
       #   run: tar -cvf my_file.tar my_file.txt  
 
       - name: Compressing file 
-        if: {{inputs.CompressArtifacts == 'true'}}
+        if: {{inputs.CompressArtifacts}} == "true"
         run: {{inputs.Compresscommand}}
       
   # Compressfile:
