@@ -9,6 +9,10 @@ on:
       Compresscommand:
         default:  tar -cvf my_file.tar my_file.txt 
         description: Command to compress th eartifact
+      maskAWSAccountId:
+        default: True
+        description: Not mask or mask
+        type: boolean
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
