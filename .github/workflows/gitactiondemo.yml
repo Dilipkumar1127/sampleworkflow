@@ -12,7 +12,7 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "testing build "
+      - run: echo "testing build"
       - name: cdk install 
         run: npm install -g aws-cdk@2.x
       - name: working directory 
@@ -25,7 +25,7 @@ jobs:
         run: ls -R
       - name: Create a file 
         run: echo "Sample to upload artifact" > my_file.txt
-      -name: Zipping file 
+      - name: Zipping file 
         run: tar -cvf my_file.tar my_file.txt  
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v3
