@@ -29,3 +29,11 @@ jobs:
           name: zipfile
           path: sampleworkflow.tar
           retention-days: 5
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - run: bundle exec rake
