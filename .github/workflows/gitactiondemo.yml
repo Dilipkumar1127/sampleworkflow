@@ -22,7 +22,7 @@ jobs:
       - name: zip file 
         run: cd .. ; zip -r sampleworkflow.zip sampleworkflow 
       - name: listing 
-        run: ls
+        run: ls /home/runner/work/sampleworkflow/sampleworkflow/
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v3
         with:
