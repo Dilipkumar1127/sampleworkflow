@@ -41,9 +41,13 @@ jobs:
       #     - name: DEMO
       #     - run: tar -cvf my_file.tar my_file.txt 
 
-      - name: Compressing file 
+      - name: If Compressing file is True
         if: ${{ inputs.CompressArtifacts == true }}
         run: tar -cvf my_file.tar my_file.txt 
+
+      - name: If Compressing file is True
+        if: ${{ inputs.CompressArtifacts == false }}
+        run: echo "Compression is not required"
       
   # Compressfile:
   #   runs-on: ubuntu-latest
