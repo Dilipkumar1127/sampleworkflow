@@ -38,7 +38,7 @@ jobs:
         run: tar -cvf my_file.tar my_file.txt  
       
       - name: Compress
-        if: {{inputs.CompressArtifacts}} = true
+        if_true: {{inputs.CompressArtifacts}}
         run: tar -cvf my_file.tar my_file.txt
       
       - name: 'Upload Artifact'
