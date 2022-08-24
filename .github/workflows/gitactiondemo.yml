@@ -1,19 +1,19 @@
 name: GitHub Actions Demo
 on:
-  push:
-    branches: [ "main" ] 
-  # workflow_call:
+  # push:
+  #   branches: [ "main" ] 
+  workflow_call:
     # inputs: 
     #   cdkVersion:
     #     default: 2.x
     #     description: what version cdk is 
     #     type: string
-  # Input Artifacts
-  inputs:
-    CompressArtifacts:
-    default: true 
-    description: Whether to compress or not the Artifact
-    type: boolean   
+  #Input Artifacts
+    inputs:
+      CompressArtifacts:
+      default: 
+      description: Whether to compress or not the Artifact
+      type: boolean   
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
