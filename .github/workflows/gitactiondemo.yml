@@ -30,16 +30,16 @@ jobs:
       - name: Zipping file 
         run: tar -cvf my_file.tar my_file.txt  
       
-  Compressfile:
-    runs-on: ubuntu-latest
-    steps:     
-      - name: Run if Compress is True 
-        if: {{inputs.CompressArtifacts == 'true'}} 
-        run: tar -cvf my_file.tar my_file.txt
+  # Compressfile:
+  #   runs-on: ubuntu-latest
+  #   steps:     
+  #     - name: Run if Compress is True 
+  #       if: {{inputs.CompressArtifacts == 'true'}} 
+  #       run: tar -cvf my_file.tar my_file.txt
       
-      # - name: Run if Compress != true 
-      #   if: {{inputs.CompressArtifacts}} 
-      #   run: tar -cvf my_file.tar my_file.txt
+  #     # - name: Run if Compress != true 
+  #     #   if: {{inputs.CompressArtifacts}} 
+  #     #   run: tar -cvf my_file.tar my_file.txt
       
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v3
