@@ -8,37 +8,42 @@ on:
     #     default: 2.x
     #     description: what version cdk is 
     #     type: string
+  # Input Artifacts
+  CompressArtifacts:
+    default: true 
+    description: Whether to compress or not the Artifact
+    type: boolean   
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
       - run: echo "testing build"
+      
       - name: cdk install 
         run: npm install -g aws-cdk@2.x
+      
       - name: working directory 
         run: pwd
-      # - name: buildCommand
-      #   run: cdk synth
+      
       - name: zip file 
         run: cd .. ; tar -cvf sampleworkflow.tar sampleworkflow 
+      
       - name: listing 
         run: ls -R
+      
       - name: Create a file 
         run: echo "Sample to upload artifact" > my_file.txt
+      
       - name: Zipping file 
         run: tar -cvf my_file.tar my_file.txt  
+      
+      - name: Compress
+        if: {{inputs.CompressArtifacts}} = true
+        run: tar -cvf my_file.tar my_file.txt
+      
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v3
         with:
           name: my_file.tar
           path: ./
           retention-days: 5
-  # Test:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - uses: ruby/setup-ruby@v1
-  #       with:
-  #         ruby-version: '3.0'
-  #         bundler-cache: true
-  #     - run: bundle exec rake
