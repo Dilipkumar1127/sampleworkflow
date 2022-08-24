@@ -20,4 +20,4 @@ jobs:
       # - name: buildCommand
       #   run: cdk synth
       - name: zip file 
-        run: cd .. && pwd && zip -r cdk-project.zip cdk-project 
+        run: cd .. ; zip -r cdk-project.zip cdk-project 
