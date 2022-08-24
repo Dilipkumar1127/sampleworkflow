@@ -5,7 +5,10 @@ on:
       CompressArtifacts:
         default: 
         description: Whether to compress or not the Artifact
-        type: boolean   
+        type: boolean  
+      Compresscommand:
+        default:  tar -cvf my_file.tar my_file.txt 
+        description: Command to compress th eartifact
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
@@ -27,8 +30,12 @@ jobs:
       - name: Create a file 
         run: echo "Sample to upload artifact" > my_file.txt
       
-      - name: Zipping file 
-        run: tar -cvf my_file.tar my_file.txt  
+      # - name: Zipping file 
+      #   run: tar -cvf my_file.tar my_file.txt  
+
+      - name: Compressing file 
+        if: {{inputs.CompressArtifacts == 'true'}}
+        run: {{inputs.Compresscommand}}
       
   # Compressfile:
   #   runs-on: ubuntu-latest
