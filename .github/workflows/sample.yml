@@ -15,7 +15,7 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  test_pull_request:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -23,5 +23,5 @@ jobs:
         with:
           node-version: 12
       # - run: npm ci
-      # - run: npm test
+      - run: ls; pwd
       - run: npm run build
