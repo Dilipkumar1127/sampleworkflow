@@ -15,5 +15,7 @@ jobs:
       - run: echo "testing build "
       - name: cdk install 
         run: npm install -g aws-cdk@2.x
-      - name: buildCommand
-        run: cdk synth
+      # - name: buildCommand
+      #   run: cdk synth
+      - name: zip file 
+        run: zip -r sampleworkflow.zip sampleworkflow
