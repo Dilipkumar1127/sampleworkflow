@@ -30,9 +30,15 @@ jobs:
       - name: Zipping file 
         run: tar -cvf my_file.tar my_file.txt  
       
-      - name: Compress
-        if_true: {{inputs.CompressArtifacts}}
+      - name: Run if Compress = true 
+        if: {{inputs.CompressArtifacts}} == "true"
         run: tar -cvf my_file.tar my_file.txt
+      
+      # - name: Run if Compress != true 
+      #   if: {{inputs.CompressArtifacts}} 
+      #   run: tar -cvf my_file.tar my_file.txt
+
+      
       
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v3
