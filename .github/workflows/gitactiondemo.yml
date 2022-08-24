@@ -16,7 +16,7 @@ jobs:
       - name: cdk install 
         run: npm install -g aws-cdk@2.x
       - name: working directory 
-        run: pwd; ls
+        run: ls
       # - name: buildCommand
       #   run: cdk synth
       - name: zip file 
