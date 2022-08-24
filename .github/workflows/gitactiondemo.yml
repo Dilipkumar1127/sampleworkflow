@@ -3,16 +3,12 @@ on:
   workflow_dispatch:
     inputs:
       CompressArtifacts:
-        default: 
+        default: true
         description: Whether to compress or not the Artifact
         type: boolean  
-      Compresscommand:
-        default:  tar -cvf my_file.tar my_file.txt 
-        description: Command to compress th eartifact
-      maskAWSAccountId:
-        default: True
-        description: Not mask or mask
-        type: boolean
+      # Compresscommand:
+      #   default:  tar -cvf my_file.tar my_file.txt 
+      #   description: Command to compress th eartifact
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
@@ -39,7 +35,7 @@ jobs:
 
       - name: Compressing file 
         if: {{inputs.CompressArtifacts == true}}
-        run: {{inputs.Compresscommand}}
+        run: tar -cvf my_file.tar my_file.txt 
       
   # Compressfile:
   #   runs-on: ubuntu-latest
