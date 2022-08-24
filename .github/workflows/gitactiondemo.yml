@@ -16,12 +16,13 @@ jobs:
       - name: cdk install 
         run: npm install -g aws-cdk@2.x
       - name: working directory 
-        run: ls ; pwd
+        run: pwd
       # - name: buildCommand
       #   run: cdk synth
       - name: zip file 
         run: cd .. ; zip -r sampleworkflow.zip sampleworkflow 
-
+      - name: listing 
+        run: ls
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v3
         with:
