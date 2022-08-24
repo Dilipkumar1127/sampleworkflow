@@ -14,6 +14,6 @@ jobs:
     steps:
       - run: echo "testing build "
       - name: cdk install 
-        run: npm install -g aws-cdk
+        run: npm install -g aws-cdk@2.x
       - name: buildCommand
-        run: cdk synth --app "node cdk-project.js"
+        run: cdk synth
