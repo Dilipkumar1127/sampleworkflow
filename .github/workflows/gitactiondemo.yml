@@ -31,7 +31,7 @@ jobs:
         run: tar -cvf my_file.tar my_file.txt  
       
       - name: Run if Compress is True 
-        if: {{inputs.CompressArtifacts}} == 'true'
+        if: {{inputs.CompressArtifacts == 'true'}} 
         run: tar -cvf my_file.tar my_file.txt
       
       # - name: Run if Compress != true 
