@@ -20,12 +20,12 @@ jobs:
       # - name: buildCommand
       #   run: cdk synth
       - name: zip file 
-        run: cd .. ; zip -r sampleworkflow.zip sampleworkflow 
+        run: cd .. ; tar -cvf sampleworkflow.tar sampleworkflow 
       - name: listing 
         run: ls -R
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v3
         with:
-          name: sampleworkflow.zip
-          path: /home/runner/work/sampleworkflow/sampleworkflow
+          name: zipfile
+          path: sampleworkflow.tar
           retention-days: 5
