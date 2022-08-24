@@ -3,9 +3,9 @@ on:
   workflow_call:
     inputs: 
       cdkVersion:
-      default: 2.x
-      description: what version cdk is 
-      type: string
+        default: 2.x
+        description: what version cdk is 
+        type: string
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
