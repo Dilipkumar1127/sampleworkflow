@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       CompressArtifacts:
-        default: 
+        default: true 
         description: Whether to compress or not the Artifact
         type: boolean  
       # Compresscommand:
@@ -38,13 +38,13 @@ jobs:
       #   if: ${{ inputs.CompressArtifacts == false }}
       #   run: echo "Compression is not required"
       
-      - name: 'Upload Compressed Artifact'
-        uses: actions/upload-artifact@v3
-        if: ${{ inputs.CompressArtifacts == true }}
-        with:
-          name: my_file.tar
-          path: ./
-          retention-days: 5
+      # - name: 'Upload Compressed Artifact'
+      #   uses: actions/upload-artifact@v3
+      #   if: ${{ inputs.CompressArtifacts == true }}
+      #   with:
+      #     name: my_file.tar
+      #     path: ./
+      #     retention-days: 5
       - name: 'Upload UnCompressed Artifact'
         uses: actions/upload-artifact@v3
         if: ${{ inputs.CompressArtifacts == false }}
