@@ -9,6 +9,9 @@ on:
       # Compresscommand:
       #   default:  tar -cvf my_file.tar my_file.txt 
       #   description: Command to compress th eartifact
+      ArtifactPath:
+         default: Artifact Path
+         type: string
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
@@ -40,14 +43,14 @@ jobs:
       
       - name: 'Upload Compressed Artifact'
         uses: actions/upload-artifact@v3
-        if: ${{ inputs.CompressArtifacts == true }}
+        if: ${{ (inputs.ArtifactPath) && (inputs.CompressArtifacts == true) }}
         with:
-          name: my_file.tar
+          name: {{ArtifactPath}}.tar
           path: ./
           retention-days: 5
       - name: 'Upload UnCompressed Artifact'
         uses: actions/upload-artifact@v3
-        if: ${{ inputs.CompressArtifacts == false }}
+        if: ${{ (inputs.ArtifactPath) && (inputs.CompressArtifacts == false) }}
         with:
           name: my_file.text
           path: ./
