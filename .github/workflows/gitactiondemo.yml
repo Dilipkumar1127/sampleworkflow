@@ -30,22 +30,25 @@ jobs:
       - name: Create a file 
         run: echo "Sample to upload artifact" > my_file.txt
 
-      - name: If Compressing file is True
-        if: ${{ inputs.CompressArtifacts == true }}
-        run: tar -cvf my_file.tar my_file.txt 
+      # - name: If Compressing file is True
+      #   if: ${{ inputs.CompressArtifacts == true }}
+      #   run: tar -cvf my_file.tar my_file.txt 
 
-      - name: If Compressing file is False
-        if: ${{ inputs.CompressArtifacts == false }}
-        run: echo "Compression is not required"
+      # - name: If Compressing file is False
+      #   if: ${{ inputs.CompressArtifacts == false }}
+      #   run: echo "Compression is not required"
       
       - name: 'Upload Compressed Artifact'
         uses: actions/upload-artifact@v3
+        if: ${{ inputs.CompressArtifacts == true }}
+        run: tar -cvf my_file.tar my_file.txt 
         with:
           name: my_file.tar
           path: ./
           retention-days: 5
       - name: 'Upload UnCompressed Artifact'
         uses: actions/upload-artifact@v3
+        if: ${{ inputs.CompressArtifacts == false }}
         with:
           name: my_file.text
           path: ./
