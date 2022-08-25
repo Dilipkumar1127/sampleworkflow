@@ -62,7 +62,7 @@ jobs:
         # if: ${{ ( inputs.ArtifactName ) && ( inputs.CompressArtifacts == true ) }}
         if: ${{ inputs.ArtifactName  }}
         with:
-          name: ${{ inputs.ArtifactName }}.tru
+          name: ${{ inputs.ArtifactName }}
           path: ${{ inputs.ArtifactName }}.tar
           retention-days: 5
       - name: 'Upload Artifact'
