@@ -45,7 +45,7 @@ jobs:
         uses: actions/upload-artifact@v3
         if: ${{ inputs.CompressArtifacts == true }}
         with:
-          name: ${{ArtifactPath}}.tar
+          name: ${{ ArtifactPath }}.tar
           path: ./
           retention-days: 5
       - name: 'Upload UnCompressed Artifact'
