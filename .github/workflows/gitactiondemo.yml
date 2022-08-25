@@ -39,7 +39,7 @@ jobs:
 
       - name: If Compressing file is True
         # if: ${{ inputs.CompressArtifacts == true }}
-        run: tar -cvf ${{ inputs.ArtifactPath }}.tar {{inputs.WorkingDir}}/${{ inputs.ArtifactPath }} 
+        run: tar -cvf ${{ inputs.ArtifactPath }}.tar ${{inputs.WorkingDir}}/${{ inputs.ArtifactPath }} 
 
       # - name: If Compressing file is False
       #   if: ${{ inputs.CompressArtifacts == false }}
