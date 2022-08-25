@@ -46,9 +46,9 @@ jobs:
       - name: If Compressing file is True
         if: ${{ inputs.CompressArtifacts == true }}
         run: tar -cvf ${{ inputs.ArtifactName }}.tar ${{inputs.WorkingDir}}
-      - name: If Compression not required  
-        if: ${{ inputs.CompressArtifacts != true }}
-        run: echo "Compression is not required"
+      # - name: If Compression not required  
+      #   if: ${{ inputs.CompressArtifacts != true }}
+      #   run: echo "Compression is not required"
       
       - name: listing files 
         run: ls
@@ -62,7 +62,7 @@ jobs:
         # if: ${{ ( inputs.ArtifactName ) && ( inputs.CompressArtifacts == true ) }}
         if: ${{ inputs.ArtifactName  }}
         with:
-          name: ${{ inputs.ArtifactName }}
+          name: ${{ inputs.ArtifactName }}.tru
           path: ${{ inputs.ArtifactName }}.tar
           retention-days: 5
       - name: 'Upload Artifact'
@@ -70,6 +70,6 @@ jobs:
         # if: ${{ ( inputs.ArtifactPath ) && ( inputs.CompressArtifacts == false ) }}
         if: ${{ inputs.ArtifactPath }}
         with:
-          name: ${{ inputs.ArtifactName }}
+          name: ${{ inputs.ArtifactName }}.fal
           path: ${{inputs.ArtifactName}}
           retention-days: 5
