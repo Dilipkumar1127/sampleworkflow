@@ -13,7 +13,7 @@ on:
          default: 
          type: string
       WorkingDir:
-         default: './'
+         default: '.'
          type: string
          description: specify start dir
 jobs:
