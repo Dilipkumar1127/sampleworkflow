@@ -46,7 +46,7 @@ jobs:
       - name: If Compressing file is True
         if: ${{ inputs.CompressArtifacts == true }}
         run: tar -cvf ${{ inputs.ArtifactName }}.tar ${{inputs.WorkingDir}}
-      -name: If Compression not required  
+      - name: If Compression not required  
         if: ${{ inputs.CompressArtifacts != true }}
         run: echo "Compression is not required"
       
