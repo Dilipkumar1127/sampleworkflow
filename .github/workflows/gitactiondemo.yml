@@ -46,6 +46,8 @@ jobs:
       - name: If Compressing file is True
         if: ${{ inputs.CompressArtifacts == true }}
         run: tar -cvf ${{ inputs.ArtifactName }}.tar ${{inputs.WorkingDir}} 
+      - name: listing files 
+        run: ls
 
       # - name: If Compressing file is False
       #   if: ${{ inputs.CompressArtifacts == false }}
