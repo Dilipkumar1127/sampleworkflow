@@ -10,7 +10,7 @@ on:
       #   default:  tar -cvf my_file.tar my_file.txt 
       #   description: Command to compress th eartifact
       ArtifactPath:
-         default: Artifact Path
+         default: 
          type: string
 jobs:
   Explore-GitHub-Actions:
@@ -31,7 +31,7 @@ jobs:
         run: ls -R
       
       - name: Create a file 
-        run: echo "Sample to upload artifact" > my_file.txt
+        run: echo "Sample to Upload artifact" > {{inputs.ArtifactPath}}.txt
 
       - name: If Compressing file is True
         # if: ${{ inputs.CompressArtifacts == true }}
