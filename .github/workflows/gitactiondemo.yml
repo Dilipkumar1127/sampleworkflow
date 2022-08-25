@@ -53,5 +53,5 @@ jobs:
         if: ${{ ( inputs.ArtifactPath ) && ( inputs.CompressArtifacts == false ) }}
         with:
           name: ${{ inputs.ArtifactPath }}
-          path: ./
+          path: ./${{ inputs.ArtifactPath }}
           retention-days: 5
