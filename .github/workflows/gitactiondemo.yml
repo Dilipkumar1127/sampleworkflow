@@ -65,7 +65,8 @@ jobs:
           retention-days: 5
       - name: 'Upload UnCompressed Artifact'
         uses: actions/upload-artifact@v3
-        if: ${{ ( inputs.ArtifactPath ) && ( inputs.CompressArtifacts == false ) }}
+        # if: ${{ ( inputs.ArtifactPath ) && ( inputs.CompressArtifacts == false ) }}
+        if: ${{ inputs.ArtifactPath }}
         with:
           name: ${{ inputs.ArtifactName }}
           path: ${{inputs.ArtifactName}}
