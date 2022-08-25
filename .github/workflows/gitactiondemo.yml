@@ -12,10 +12,16 @@ on:
       ArtifactName:
          default: 
          type: string
+      ArtifactName2:
+         default: 
+         type: string
       WorkingDir:
          default: './'
          type: string
          description: specify start dir
+      ArtifactPath:
+         description: path of Artifact
+         type: string
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
@@ -39,7 +45,7 @@ jobs:
 
       - name: If Compressing file is True
         # if: ${{ inputs.CompressArtifacts == true }}
-        run: tar -cvf ${{ inputs.ArtifactPath }}.tar ${{inputs.WorkingDir}} 
+        run: tar -cvf ${{ inputs.ArtifactName }}.tar ${{inputs.WorkingDir}} 
 
       # - name: If Compressing file is False
       #   if: ${{ inputs.CompressArtifacts == false }}
@@ -47,9 +53,9 @@ jobs:
       
       - name: 'Upload Compressed Artifact'
         uses: actions/upload-artifact@v3
-        if: ${{ ( inputs.ArtifactPath ) && ( inputs.CompressArtifacts == true ) }}
+        if: ${{ ( inputs.ArtifactName ) && ( inputs.CompressArtifacts == true ) }}
         with:
-          name: ${{ inputs.ArtifactName }}
+          name: ${{ inputs.ArtifactName2 }}
           path: ${{ inputs.ArtifactName }}.tar
           retention-days: 5
       # - name: 'Upload UnCompressed Artifact'
