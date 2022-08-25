@@ -58,10 +58,10 @@ jobs:
           name: ${{ inputs.ArtifactName2 }}
           path: ${{ inputs.ArtifactName }}.tar
           retention-days: 5
-      # - name: 'Upload UnCompressed Artifact'
-      #   uses: actions/upload-artifact@v3
-      #   if: ${{ ( inputs.ArtifactPath ) && ( inputs.CompressArtifacts == false ) }}
-      #   with:
-      #     name: ${{ inputs.ArtifactPath }}
-      #     path: ${{inputs.WorkingDir}}/${{ inputs.ArtifactPath }}
-      #     retention-days: 5
+      - name: 'Upload UnCompressed Artifact'
+        uses: actions/upload-artifact@v3
+        if: ${{ ( inputs.ArtifactPath ) && ( inputs.CompressArtifacts == false ) }}
+        with:
+          name: ${{ inputs.ArtifactName2 }}
+          path: ${{inputs.ArtifactName}}
+          retention-days: 5
