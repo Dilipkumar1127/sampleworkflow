@@ -43,14 +43,14 @@ jobs:
       
       - name: 'Upload Compressed Artifact'
         uses: actions/upload-artifact@v3
-        if: ${{ (inputs.ArtifactPath) && (inputs.CompressArtifacts == true) }}
+        if: ${{ inputs.CompressArtifacts == true }}
         with:
           name: ${{ArtifactPath}}.tar
           path: ./
           retention-days: 5
       - name: 'Upload UnCompressed Artifact'
         uses: actions/upload-artifact@v3
-        if: ${{ (inputs.ArtifactPath) && (inputs.CompressArtifacts == false) }}
+        if: ${{ inputs.CompressArtifacts == false }}
         with:
           name: my_file.text
           path: ./
