@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       CompressArtifacts:
-        default: true
+        default: 
         description: Whether to compress or not the Artifact
         type: boolean  
       # Compresscommand:
@@ -29,40 +29,24 @@ jobs:
       
       - name: Create a file 
         run: echo "Sample to upload artifact" > my_file.txt
-      
-      # - name: Zipping file 
-      #   run: tar -cvf my_file.tar my_file.txt  
-
-      # - name: Compressing file 
-      #   if: {{ inputs.CompressArtifacts == true }}
-      #   runs-on: ubuntu-latest
-      #   needs: build_test
-      #   steps: 
-      #     - name: DEMO
-      #     - run: tar -cvf my_file.tar my_file.txt 
 
       - name: If Compressing file is True
         if: ${{ inputs.CompressArtifacts == true }}
         run: tar -cvf my_file.tar my_file.txt 
 
-      - name: If Compressing file is True
+      - name: If Compressing file is False
         if: ${{ inputs.CompressArtifacts == false }}
         run: echo "Compression is not required"
       
-  # Compressfile:
-  #   runs-on: ubuntu-latest
-  #   steps:     
-  #     - name: Run if Compress is True 
-  #       if: {{inputs.CompressArtifacts == 'true'}} 
-  #       run: tar -cvf my_file.tar my_file.txt
-      
-  #     # - name: Run if Compress != true 
-  #     #   if: {{inputs.CompressArtifacts}} 
-  #     #   run: tar -cvf my_file.tar my_file.txt
-      
-      - name: 'Upload Artifact'
+      - name: 'Upload Compressed Artifact'
         uses: actions/upload-artifact@v3
         with:
           name: my_file.tar
+          path: ./
+          retention-days: 5
+      - name: 'Upload UnCompressed Artifact'
+        uses: actions/upload-artifact@v3
+        with:
+          name: my_file.text
           path: ./
           retention-days: 5
