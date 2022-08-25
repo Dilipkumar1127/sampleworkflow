@@ -55,17 +55,18 @@ jobs:
       
       
       ## uncomment lines below 53-67
-      # - name: 'Upload Compressed Artifact'
-      #   uses: actions/upload-artifact@v3
-      #   if: ${{ ( inputs.ArtifactName ) && ( inputs.CompressArtifacts == true ) }}
-      #   with:
-      #     name: ${{ inputs.ArtifactName }}
-      #     path: ${{ inputs.ArtifactName }}.tar
-      #     retention-days: 5
-      # - name: 'Upload UnCompressed Artifact'
-      #   uses: actions/upload-artifact@v3
-      #   if: ${{ ( inputs.ArtifactPath ) && ( inputs.CompressArtifacts == false ) }}
-      #   with:
-      #     name: ${{ inputs.ArtifactName }}
-      #     path: ${{inputs.ArtifactName}}
-      #     retention-days: 5
+      - name: 'Upload Compressed Artifact'
+        uses: actions/upload-artifact@v3
+        # if: ${{ ( inputs.ArtifactName ) && ( inputs.CompressArtifacts == true ) }}
+        if: ${{ inputs.ArtifactName  }}
+        with:
+          name: ${{ inputs.ArtifactName }}
+          path: ${{ inputs.ArtifactName }}.tar
+          retention-days: 5
+      - name: 'Upload UnCompressed Artifact'
+        uses: actions/upload-artifact@v3
+        if: ${{ ( inputs.ArtifactPath ) && ( inputs.CompressArtifacts == false ) }}
+        with:
+          name: ${{ inputs.ArtifactName }}
+          path: ${{inputs.ArtifactName}}
+          retention-days: 5
