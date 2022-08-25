@@ -9,11 +9,11 @@ on:
       # Compresscommand:
       #   default:  tar -cvf my_file.tar my_file.txt 
       #   description: Command to compress th eartifact
-      ArtifactPath:
+      ArtifactName:
          default: 
          type: string
       WorkingDir:
-         default: '.'
+         default: './'
          type: string
          description: specify start dir
 jobs:
@@ -35,11 +35,11 @@ jobs:
         run: ls -R
       
       - name: Create a file 
-        run: echo "Sample to Upload artifact" > ${{inputs.ArtifactPath}}.txt
+        run: echo "Sample to Upload artifact" > ${{inputs.ArtifactName}}
 
       - name: If Compressing file is True
         # if: ${{ inputs.CompressArtifacts == true }}
-        run: tar -cvf ${{ inputs.ArtifactPath }}.tar ${{inputs.WorkingDir}}/${{ inputs.ArtifactPath }} 
+        run: tar -cvf ${{ inputs.ArtifactPath }}.tar ${{inputs.WorkingDir}} 
 
       # - name: If Compressing file is False
       #   if: ${{ inputs.CompressArtifacts == false }}
@@ -49,8 +49,8 @@ jobs:
         uses: actions/upload-artifact@v3
         if: ${{ ( inputs.ArtifactPath ) && ( inputs.CompressArtifacts == true ) }}
         with:
-          name: ${{ inputs.ArtifactPath }}
-          path: ${{ inputs.ArtifactPath }}.tar
+          name: ${{ inputs.ArtifactName }}
+          path: ${{ inputs.ArtifactName }}.tar
           retention-days: 5
       # - name: 'Upload UnCompressed Artifact'
       #   uses: actions/upload-artifact@v3
