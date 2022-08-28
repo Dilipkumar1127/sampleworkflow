@@ -10,7 +10,7 @@ on:
       #   default:  tar -cvf my_file.tar my_file.txt 
       #   description: Command to compress th eartifact
       ArtifactName:
-         default: 
+         default: artifact
          type: string
       # ArtifactName2:
       #    default: 
@@ -70,6 +70,6 @@ jobs:
         # if: ${{ ( inputs.ArtifactPath ) && ( inputs.CompressArtifacts == false ) }}
         if: ${{ inputs.ArtifactPath }}
         with:
-          name: ${{ inputs.ArtifactName }}.fal
-          path: ${{inputs.ArtifactName}}
+          name: ${{ inputs.ArtifactName }}
+          path: ${{ WorkingDir }}/${{ inputs.ArtifactName }}
           retention-days: 5
