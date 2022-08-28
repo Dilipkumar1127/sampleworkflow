@@ -71,5 +71,5 @@ jobs:
         if: ${{ inputs.ArtifactPath }}
         with:
           name: ${{ inputs.ArtifactName }}
-          path: ${{ WorkingDir }}/${{ inputs.ArtifactName }}
+          path: ${{ inputs.WorkingDir }}/${{ inputs.ArtifactName }}
           retention-days: 5
