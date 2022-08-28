@@ -41,7 +41,7 @@ jobs:
         run: ls -R
       
       - name: Create a file 
-        run: echo "Sample to Upload artifact" > ${{inputs.ArtifactName}}
+        run: echo "Sample to Upload artifact" > ${{ inputs.ArtifactName }}
 
       - name: If Compressing file is True
         if: ${{ inputs.CompressArtifacts == true }}
