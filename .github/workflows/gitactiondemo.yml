@@ -59,16 +59,16 @@ jobs:
       
       - name: 'Upload Compressed Artifact'
         uses: actions/upload-artifact@v3
-        # if: ${{ ( inputs.ArtifactName ) && ( inputs.CompressArtifacts == true ) }}
-        if: ${{ inputs.ArtifactName  }}
+        if: ${{ ( inputs.ArtifactName ) && ( inputs.CompressArtifacts == true ) }}
+        # if: ${{ inputs.ArtifactName  }}
         with:
           name: ${{ inputs.ArtifactName }}
           path: ${{ inputs.ArtifactName }}.tar
           retention-days: 5
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v3
-        # if: ${{ ( inputs.ArtifactPath ) && ( inputs.CompressArtifacts == false ) }}
-        if: ${{ inputs.ArtifactPath }}
+        if: ${{ ( inputs.ArtifactPath ) && ( inputs.CompressArtifacts != true ) }}
+        # if: ${{ inputs.ArtifactPath }}
         with:
           name: ${{ inputs.ArtifactName }}
           path: ${{ inputs.WorkingDir }}/${{ inputs.ArtifactName }}
