@@ -41,11 +41,11 @@ jobs:
         run: ls -R
       
       - name: Create a file 
-        run: echo "Sample to Upload artifact" > ${{ inputs.ArtifactName }}/${{inputs.ArtifactPath}}
+        run: echo "Sample to Upload artifact" > ${{ inputs.ArtifactName }}
 
       - name: If Compressing file is True
         if: ${{ inputs.CompressArtifacts == true }}
-        run: tar -cvf ${{ inputs.ArtifactName }}.tar ${{inputs.WorkingDir}}
+        run: tar -cvf ${{ inputs.ArtifactName }}.tar ${{inputs.WorkingDir}}/${{inputs.ArtifactPath}}
       # - name: If Compression not required  
       #   if: ${{ inputs.CompressArtifacts != true }}
       #   run: echo "Compression is not required"
