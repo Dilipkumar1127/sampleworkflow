@@ -34,8 +34,8 @@ jobs:
       - name: working directory 
         run: pwd
       
-      - name: zip file 
-        run: cd .. ; tar -cvf sampleworkflow.tar sampleworkflow 
+      # - name: zip file 
+      #   run: cd .. ; tar -cvf sampleworkflow.tar sampleworkflow 
       
       - name: listing 
         run: ls -R
