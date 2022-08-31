@@ -7,6 +7,7 @@ on:
 
 jobs:
   call-workflow:
-    uses: Dilipkumar1127/sampleworkflow/ .github/workflows/gitactiondemo.yml@main
+    uses: Dilipkumar1127/sampleworkflow/.github/workflows/gitactiondemo.yml@
     # https://github.com/Dilipkumar1127/sampleworkflow.git
     # /Users/dilipkumardonka/Desktop/git-workflow/sampleworkflow/.github/workflows/gitactiondemo.yml
+    
