@@ -16,10 +16,11 @@ on:
       #    default: 
       #    type: string
       WorkingDir:
-         default: './'
+         default: '.'
          type: string
          description: specify start dir
       ArtifactPath:
+         default: Downloads
          description: path of Artifact
          type: string
 jobs:
