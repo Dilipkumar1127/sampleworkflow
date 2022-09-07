@@ -66,14 +66,7 @@ jobs:
       # - name: If Compressing file is False
       #   if: ${{ inputs.CompressArtifacts == false }}
       #   run: echo "Compression is not required"
-
-      - name: Download artifact A
-        uses: actions/download-artifact@v3
-        if: ${{ ( inputs.ArtifactName ) && (inputs.DownloadArtifact == true) }}
-        with:
-          name: ${{ inputs.ArtifactName }}
-          path: ${{ inputs.WorkingDir }}/${{ inputs.ArtifactPath }}
-          # retention-days: 5
+      # retention-days: 5
       
       - name: 'Upload Compressed Artifact'
         uses: actions/upload-artifact@v3
@@ -91,5 +84,12 @@ jobs:
           name: ${{ inputs.ArtifactName }}
           path: ${{ inputs.WorkingDir }}/${{ inputs.ArtifactName }}
           retention-days: 5
+
+      - name: Download artifact A
+        uses: actions/download-artifact@v3
+        if: ${{ ( inputs.ArtifactName ) && (inputs.DownloadArtifact == true) }}
+        with:
+          name: ${{ inputs.ArtifactName }}
+          path: ${{ inputs.WorkingDir }}/${{ inputs.ArtifactPath }}
 
       
