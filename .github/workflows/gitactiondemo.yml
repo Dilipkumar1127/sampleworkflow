@@ -89,7 +89,7 @@ jobs:
         uses: actions/download-artifact@v3
         if: ${{ ( inputs.ArtifactName ) && (inputs.DownloadArtifact == true) }}
         with:
-          name: ${{ inputs.ArtifactName }}
+          name: ${{ inputs.WorkingDir }}/${{ inputs.ArtifactName }}
           # path: ${{ inputs.WorkingDir }}/${{ inputs.ArtifactPath }}
 
       
