@@ -73,7 +73,7 @@ jobs:
         with:
           name: ${{ inputs.ArtifactName }}
           path: ${{ inputs.WorkingDir }} #/${{ inputs.Artifact }}
-          retention-days: 5
+          # retention-days: 5
       
       - name: 'Upload Compressed Artifact'
         uses: actions/upload-artifact@v3
