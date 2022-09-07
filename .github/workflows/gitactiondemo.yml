@@ -27,9 +27,6 @@ on:
         default: true 
         description: Whether to Download or not the Artifact
         type: boolean
-      ArtifactName2:
-         default: TarArtifact
-         type: string
       
 jobs:
   Explore-GitHub-Actions:
@@ -90,9 +87,9 @@ jobs:
 
       - name: Download artifact A
         uses: actions/download-artifact@v3
-        if: ${{ ( inputs.ArtifactName2 ) && (inputs.DownloadArtifact == true) }}
+        if: ${{ ( inputs.ArtifactName ) && (inputs.DownloadArtifact == true) }}
         with:
-          name: ${{ inputs.ArtifactName2 }}
+          name: ${{ inputs.ArtifactName }}
           # path: ${{ inputs.WorkingDir }}/${{ inputs.ArtifactPath }}
 
       
