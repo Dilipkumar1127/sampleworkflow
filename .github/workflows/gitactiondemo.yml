@@ -57,7 +57,7 @@ jobs:
       #   run: echo "Compression is not required"
       - name: If Downloading is True
         if: ${{ inputs.DownloadArtifact == true }}
-        run: tar -xvf ${{ inputs.ArtifactName }}.tar ${{inputs.WorkingDir}}/${{inputs.ArtifactPath}}
+        run: tar -xvf ${{ inputs.ArtifactName }}.tar -C ${{inputs.WorkingDir}}/${{inputs.ArtifactPath}}
       # - name: If Compression not required 
 
       - name: listing 
