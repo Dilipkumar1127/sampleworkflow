@@ -72,7 +72,7 @@ jobs:
         if: ${{ ( inputs.ArtifactName ) && (inputs.DownloadArtifact == true) }}
         with:
           name: ${{ inputs.ArtifactName }}
-          path: ${{ inputs.WorkingDir }}/${{ inputs.Artifact }}
+          path: ${{ inputs.WorkingDir }} #/${{ inputs.Artifact }}
           retention-days: 5
       
       - name: 'Upload Compressed Artifact'
