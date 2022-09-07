@@ -57,7 +57,7 @@ jobs:
       #   run: echo "Compression is not required"
       - name: If Downloading is True
         if: ${{ inputs.DownloadArtifact == true }}
-        run: tar -xvf ${{ inputs.ArtifactName }}.tar ${{inputs.WorkingDir}} #/${{inputs.ArtifactPath}}
+        run: tar -xvf ${{ inputs.ArtifactName }}.tar ${{inputs.WorkingDir}}/${{inputs.ArtifactPath}}
       # - name: If Compression not required  
 
       - name: listing files 
@@ -89,7 +89,7 @@ jobs:
         uses: actions/download-artifact@v3
         if: ${{ ( inputs.ArtifactName ) && (inputs.DownloadArtifact == true) }}
         with:
-          name: ${{ inputs.WorkingDir }}/${{ inputs.ArtifactName }}
+          name: ${{ inputs.ArtifactName }}
           # path: ${{ inputs.WorkingDir }}/${{ inputs.ArtifactPath }}
 
       
