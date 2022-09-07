@@ -23,6 +23,11 @@ on:
          default: Downloads
          description: path of Artifact
          type: string
+      DownloadArtifact:
+        default: true 
+        description: Whether to Download or not the Artifact
+        type: boolean
+      
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
@@ -50,13 +55,25 @@ jobs:
       # - name: If Compression not required  
       #   if: ${{ inputs.CompressArtifacts != true }}
       #   run: echo "Compression is not required"
-      
+      - name: If Downloading is True
+        if: ${{ inputs.DownloadArtifact == true }}
+        run: tar -xvf ${{ inputs.ArtifactName }}.tar ${{inputs.WorkingDir}}/${{inputs.ArtifactPath}}
+      # - name: If Compression not required  
+
       - name: listing files 
         run: ls
 
       # - name: If Compressing file is False
       #   if: ${{ inputs.CompressArtifacts == false }}
       #   run: echo "Compression is not required"
+
+      - name: Download artifact A
+      uses: actions/download-artifact@v3
+      if: ${{ ( inputs.ArtifactName ) && (inputs.DownloadArtifact == true) }}
+      with:
+        name: ${{ inputs.ArtifactName }}
+        path: ${{ inputs.WorkingDir }}/${{ inputs.Artifact }}
+        retention-days: 5
       
       - name: 'Upload Compressed Artifact'
         uses: actions/upload-artifact@v3
@@ -74,3 +91,5 @@ jobs:
           name: ${{ inputs.ArtifactName }}
           path: ${{ inputs.WorkingDir }}/${{ inputs.ArtifactName }}
           retention-days: 5
+
+      
